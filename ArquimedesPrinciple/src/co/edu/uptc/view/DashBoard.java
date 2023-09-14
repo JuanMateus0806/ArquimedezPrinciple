@@ -1,5 +1,6 @@
 package co.edu.uptc.view;
 
+import co.edu.uptc.pojos.ObjectP;
 import co.edu.uptc.presenter.ContractArquimedesPrinciple;
 
 import javax.swing.*;
@@ -8,7 +9,8 @@ import java.awt.*;
 public class DashBoard extends JFrame implements ContractArquimedesPrinciple.view {
 
     ContractArquimedesPrinciple.presenter presenter;
-    private PanelValueObject panelObject;
+    private PanelValueObject panelValueObject;
+    private PanelObject panelObject;
 
     public DashBoard(){
         config();
@@ -24,6 +26,7 @@ public class DashBoard extends JFrame implements ContractArquimedesPrinciple.vie
     }
 
     public void initComponent(){
+        createPanelValueObject();
         createPanelObject();
     }
 
@@ -40,13 +43,23 @@ public class DashBoard extends JFrame implements ContractArquimedesPrinciple.vie
     @Override
     public void refresh() {
         this.repaint();
-        panelObject.changeMassExact();
-        panelObject.changeVolumeExact();
+
+        panelValueObject.changeMassExact();
+        panelValueObject.changeVolumeExact();
+        panelValueObject.updateMassAndVolume();
+        panelValueObject.
+        changeDensity();
+    }
+
+    private void createPanelValueObject(){
+        panelValueObject = new PanelValueObject(this);
+        panelValueObject.setBounds(0,0,800,80);
+        add(panelValueObject);
     }
 
     private void createPanelObject(){
-        panelObject = new PanelValueObject();
-        panelObject.setBounds(0,0,800,80);
+        panelObject = new PanelObject(this);
+        panelObject.setBounds(0,80,800,520);
         add(panelObject);
     }
 

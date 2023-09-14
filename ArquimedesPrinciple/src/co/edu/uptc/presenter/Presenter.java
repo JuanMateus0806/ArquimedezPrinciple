@@ -1,5 +1,9 @@
 package co.edu.uptc.presenter;
 
+import co.edu.uptc.pojos.ObjectP;
+
+import java.awt.*;
+
 public class Presenter implements ContractArquimedesPrinciple.presenter{
 
     ContractArquimedesPrinciple.model model;
@@ -18,5 +22,25 @@ public class Presenter implements ContractArquimedesPrinciple.presenter{
     @Override
     public void refresh() {
         view.refresh();
+    }
+
+    @Override
+    public void setPosition(Point position) {
+        model.setPosition(position);
+    }
+
+    @Override
+    public double changeDensity() {
+        return model.changeDensity();
+    }
+
+    @Override
+    public void updateMassAndVolume(int mass, int volume) {
+        model.updateMassAndVolume(mass,volume);
+    }
+
+    @Override
+    public ObjectP getObjectP() {
+        return model.getObjectP();
     }
 }

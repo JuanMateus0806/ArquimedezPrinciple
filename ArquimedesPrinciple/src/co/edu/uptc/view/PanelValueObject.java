@@ -1,10 +1,13 @@
 package co.edu.uptc.view;
 
+import co.edu.uptc.pojos.ObjectP;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class PanelValueObject extends JPanel {
 
+    private DashBoard dashBoard;
     private JLabel txtVolume;
     private JSlider volume;
     private JLabel txtVolumeExact;
@@ -12,8 +15,10 @@ public class PanelValueObject extends JPanel {
     private JSlider mass;
     private JLabel txtMassExact;
     private JLabel objectDensity;
+    private JLabel density;
 
-    public PanelValueObject(){
+    public PanelValueObject(DashBoard dashBoard){
+        this.dashBoard = dashBoard;
         config();
         initComponent();
     }
@@ -32,6 +37,7 @@ public class PanelValueObject extends JPanel {
         createTxtVolumeMaterial();
         createVolumeMaterial();
         createTxtVolumeExact();
+        createTxtDensity();
     }
 
     private void createTxtTypeOfMaterial(){
@@ -93,4 +99,30 @@ public class PanelValueObject extends JPanel {
     public void changeVolumeExact(){
         txtVolumeExact.setText("Volumen: "+volume.getValue()+ " m^3");
     }
+
+    private int massObject(){
+        return mass.getValue();
+    }
+
+    private int volumeObject(){
+        return volume.getValue();
+    }
+
+    public void updateMassAndVolume(){
+        dashBoard.presenter.updateMassAndVolume(massObject(),volumeObject());
+    }
+
+    public void createTxtDensity(){
+        density = new JLabel("Densidad: ");
+        density.setBounds(285,30,150,20);
+        density.setForeground(new Color(22,33,111));
+        density.setFont(new Font("Arial",Font.BOLD,12));
+        add(density);
+    }
+
+    public void changeDensity(){
+        density.setText("Densidad: "+ dashBoard.presenter.changeDensity());
+    }
+
+
 }
