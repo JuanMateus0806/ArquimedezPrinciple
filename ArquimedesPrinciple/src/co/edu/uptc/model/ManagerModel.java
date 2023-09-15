@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class ManagerModel implements ContractArquimedesPrinciple.model {
 
-    ContractArquimedesPrinciple.presenter presenter;
+    public ContractArquimedesPrinciple.presenter presenter;
     private boolean start;
     private ObjectP objectP;
 
