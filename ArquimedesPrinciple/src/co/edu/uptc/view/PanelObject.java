@@ -5,6 +5,8 @@ import co.edu.uptc.pojos.ObjectP;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -13,6 +15,7 @@ public class PanelObject extends JPanel {
 
     private DashBoard dashBoard;
     private Rectangle object;
+    private boolean selectObject;
 
     public PanelObject(DashBoard dashBoard){
         this.dashBoard = dashBoard;
@@ -26,7 +29,8 @@ public class PanelObject extends JPanel {
     }
 
     private void initComponent(){
-
+        checkSelectObject();
+        selectObject = false;
     }
 
     public void paint(Graphics g){
@@ -45,7 +49,26 @@ public class PanelObject extends JPanel {
         }
     }
 
-    public void checkSelectObject(){
+    public void checkSelectObject() {
+        this.addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                super.mouseDragged(e);
+                if (selectObject) {
+                    dashBoard.presenter.setPosition(e.getPoint());
+                }
+            }
+        });
+        this.addMouseListener(new MouseAdapter() {
 
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                Point point = e.getPoint();
+                if (dashBoard.presenter.getObjectP() != null) {
+                    selectObject = dashBoard.presenter.getObjectP().getRectangle().contains(point);
+                }
+            }
+        });
     }
 }
