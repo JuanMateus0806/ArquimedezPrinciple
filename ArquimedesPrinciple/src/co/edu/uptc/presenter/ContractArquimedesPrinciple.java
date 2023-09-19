@@ -12,6 +12,7 @@ public interface ContractArquimedesPrinciple {
         void setPosition(Point position);
         double changeDensity();
         void updateMassAndVolume(int mass, int volume);
+        double changeBuoyancyForce();
         ObjectP getObjectP();
 
     }
@@ -23,6 +24,7 @@ public interface ContractArquimedesPrinciple {
         void setPosition(Point position);
         double changeDensity();
         void updateMassAndVolume(int mass, int volume);
+        double changeBuoyancyForce();
         ObjectP getObjectP();
     }
 

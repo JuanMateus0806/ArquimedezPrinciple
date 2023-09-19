@@ -47,8 +47,8 @@ public class DashBoard extends JFrame implements ContractArquimedesPrinciple.vie
         panelValueObject.changeMassExact();
         panelValueObject.changeVolumeExact();
         panelValueObject.updateMassAndVolume();
-        panelValueObject.
-        changeDensity();
+        panelValueObject.changeDensity();
+        panelValueObject.changeBuoyancyForce();
     }
 
     private void createPanelValueObject(){
