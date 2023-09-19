@@ -68,5 +68,12 @@ public class PanelObject extends JPanel {
                 }
             }
         });
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                System.out.println(e.getPoint());
+            }
+        });
     }
 }
