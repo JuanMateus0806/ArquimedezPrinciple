@@ -87,7 +87,7 @@ public class PanelValueObject extends JPanel {
 
     public void createTxtDensity(){
         density = new JLabel("Densidad: ");
-        density.setBounds(220,30,150,20);
+        density.setBounds(220,30,130,20);
         density.setForeground(new Color(22,33,111));
         density.setFont(new Font("Arial",Font.BOLD,12));
         add(density);
@@ -98,15 +98,15 @@ public class PanelValueObject extends JPanel {
     }
 
     public void createTxtBuoyancyForce(){
-        buoyancyForce = new JLabel("Fuerza de flotacion: 0 N");
-        buoyancyForce.setBounds(380,30,150,20);
+        buoyancyForce = new JLabel("F.Flotacion: 0 N");
+        buoyancyForce.setBounds(360,30,180,20);
         buoyancyForce.setForeground(new Color(22,33,111));
         buoyancyForce.setFont(new Font("Arial",Font.BOLD,12));
         add(buoyancyForce);
     }
 
     public void changeBuoyancyForce(){
-        buoyancyForce.setText("Fuerza de flotacion: "+ dashBoard.presenter.changeBuoyancyForce()+" N");
+        buoyancyForce.setText("F.Flotacion: "+ dashBoard.presenter.changeBuoyancyForce()+" N");
     }
 
 }
