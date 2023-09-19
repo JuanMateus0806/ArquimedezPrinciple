@@ -40,6 +40,11 @@ public class Presenter implements ContractArquimedesPrinciple.presenter{
     }
 
     @Override
+    public double changeBuoyancyForce() {
+        return model.changeBuoyancyForce();
+    }
+
+    @Override
     public ObjectP getObjectP() {
         return model.getObjectP();
     }

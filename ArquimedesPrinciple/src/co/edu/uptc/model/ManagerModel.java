@@ -12,8 +12,18 @@ public class ManagerModel implements ContractArquimedesPrinciple.model {
     public ContractArquimedesPrinciple.presenter presenter;
     private boolean start;
     private ObjectP objectP;
+    private int coordYWater;
+    private int coordXInitialWater;
+    private int coordXFinalWater;
 
     public ManagerModel(){
+        initComponent();
+    }
+
+    private void initComponent(){
+        this.coordYWater = 280;
+        this.coordXInitialWater = 150;
+        this.coordXFinalWater = 650;
         objectP = new ObjectP(new Rectangle(0,0,40,40),200,200);
         start = true;
         refresh();
@@ -61,6 +71,11 @@ public class ManagerModel implements ContractArquimedesPrinciple.model {
         objectP.setVolume(volume);
         updateDensity();
         updateDimensionObject();
+    }
+
+    @Override
+    public double changeBuoyancyForce() {
+        return 0;
     }
 
     private void updateDensity(){

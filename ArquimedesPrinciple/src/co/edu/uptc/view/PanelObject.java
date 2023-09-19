@@ -1,7 +1,5 @@
 package co.edu.uptc.view;
 
-import co.edu.uptc.pojos.ObjectP;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
