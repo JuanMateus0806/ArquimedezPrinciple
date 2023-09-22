@@ -92,8 +92,8 @@ public class ManagerModel implements ContractArquimedesPrinciple.model {
     private double calculateBuoyancyForce(){
         double buoyancyForce = 0.0;
         switch (verifiedObjectInsideWater()){
-            case(1)-> buoyancyForce = calculateVolumeObjectSubmergedTotal();
-            case(2)-> buoyancyForce = calculateVolumeObjectSubmergedPartial();
+            case(1)-> buoyancyForce = calculateBuoyancyForteObjectSubmergedTotal();
+            case(2)-> buoyancyForce = calculateBuoyancyForceWithObjectSubmergedPartial();
         }
         return buoyancyForce;
     }
@@ -115,20 +115,19 @@ public class ManagerModel implements ContractArquimedesPrinciple.model {
         return option;
     }
 
-    private int calculateVolumeObjectSubmergedTotal(){
-        System.out.println("Fuerza de flotacion  1");
+    private int calculateBuoyancyForteObjectSubmergedTotal(){
         return (int) (densityWater*objectP.getVolume()*gravity);
     }
 
-    private int calculateVolumeObjectSubmergedPartial(){
-        double l = (Math.cbrt(objectP.getVolume()));
-        System.out.println("Lado: "+l);
-        int h = (int) ((objectP.getRectangle().y+l)-(280-(objectP.getRectangle().y+l)));
-        System.out.println("Altura: "+ h);
-        double volume = (int) (l*l*h);
-        System.out.println("Volumen: "+ volume);
-        System.out.println("Fuerza de flotacion  2");
+    private int calculateBuoyancyForceWithObjectSubmergedPartial(){
+        double volume = calculateVolumeObjectSubmergedPartial();
         return (int) (densityWater*volume*gravity);
+    }
+
+    private double calculateVolumeObjectSubmergedPartial(){
+        double l = objectP.getRectangle().width/9.0;
+        double h = ((objectP.getRectangle().width+objectP.getRectangle().y)-280)/9.0;
+        return (l*l*h);
     }
 
 }
